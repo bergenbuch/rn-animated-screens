@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   View,
   StyleSheet,
@@ -6,27 +6,41 @@ import {
   SafeAreaView,
   Text,
   Button,
+  Animated,
+  PanResponder,
+  TouchableOpacity,
 } from 'react-native';
+import {ContainersStyles} from '../../styles/containers';
+import {TextStyles} from '../../styles/text';
 
-interface HomeScreenProps {}
+interface HomeScreenProps {
+  navigation: any;
+}
 export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
-  const styles = StyleSheet.create({
-    safeArea: {
-      flex: 1,
-    },
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  });
+  const featuredArticle = 'Article 3';
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <Text>Home Screen</Text>
-          <Button title="View Articles" onPress={() => {}}></Button>
+      <SafeAreaView style={ContainersStyles.safeArea}>
+        <View style={ContainersStyles.container}>
+          <Text style={TextStyles.header}>Home</Text>
+          <TouchableOpacity
+            style={ContainersStyles.line}
+            onPress={() => {
+              props.navigation.navigate('Articles', {
+                screen: 'ArticleDetail',
+                params: {
+                  article: featuredArticle,
+                },
+              });
+            }}>
+            <Text>Featured Article: {featuredArticle}</Text>
+          </TouchableOpacity>
+          <Button
+            title="View Articles"
+            onPress={() => {
+              props.navigation.navigate('Articles');
+            }}></Button>
         </View>
       </SafeAreaView>
     </>
