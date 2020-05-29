@@ -1,4 +1,4 @@
-# rn-animated-screens
+# React Native Navigation Demo
 
 This is a minimalistic demo project that incorporates getting started guidelines from [React Native](https://reactnative.dev/docs/getting-started) and [React Navigation](https://reactnavigation.org/docs/nesting-navigators) examples.
 
